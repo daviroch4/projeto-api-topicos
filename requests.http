@@ -13,3 +13,25 @@ Content-Type: application/json
 ### Rota protegida (cole o token do login)
 GET http://localhost:3001/usuarios
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE0MzI4LCJleHAiOjE3OTA5MDA3Mjh9.mcK3sAKqWuFG_3afPDwTMLafEtnYde8OPajhkVVhJmY
+
+### Criar projeto
+POST http://localhost:3001/projetos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM
+Content-Type: application/json
+
+{ "nome": "Trabalho de API", "descricao": "Projeto da faculdade" }
+
+### Criar tarefa no projeto 1
+POST http://localhost:3001/projetos/1/tarefas
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM
+Content-Type: application/json
+
+{ "titulo": "Escrever os testes" }
+
+### Buscar projeto 1 (deve vir com as tarefas dentro)
+GET http://localhost:3001/projetos/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM
+
+### Listar tarefas do projeto 1
+GET http://localhost:3001/projetos/1/tarefas
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM

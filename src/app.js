@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const usuariosRoutes = require('./routes/usuarios');
 const { rotaNaoEncontrada, errorHandler } = require('./middlewares/errorHandler');
+const projetosRoutes = require('./routes/projetos');
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/usuarios', usuariosRoutes);
+app.use('/projetos', projetosRoutes);
 
 app.use(rotaNaoEncontrada);
 app.use(errorHandler);
