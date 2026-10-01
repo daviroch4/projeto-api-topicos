@@ -1,21 +1,32 @@
 {
   "name": "projeto-api-topicos",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API RESTful com Node.js, Express, Sequelize e autenticação JWT",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/daviroch4/projeto-api-topicos.git"
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "jest --runInBand"
   },
   "keywords": [],
-  "author": "",
+  "author": "Davi Rocha",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/daviroch4/projeto-api-topicos/issues"
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^6.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
-  "homepage": "https://github.com/daviroch4/projeto-api-topicos#readme"
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "supertest": "^7.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
