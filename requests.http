@@ -1,37 +1,52 @@
+@baseUrl = http://localhost:3001
+@token = {{login.response.body.token}}
+
 ### Registrar
-POST http://localhost:3001/usuarios/registro
+POST {{baseUrl}}/usuarios/registro
 Content-Type: application/json
 
 { "nome": "Davi", "email": "davi@teste.com", "senha": "123456" }
 
-### Login
-POST http://localhost:3001/usuarios/login
+### Login (rode este primeiro: ele gera o token usado nos demais)
+# @name login
+POST {{baseUrl}}/usuarios/login
 Content-Type: application/json
 
 { "email": "davi@teste.com", "senha": "123456" }
 
-### Rota protegida (cole o token do login)
-GET http://localhost:3001/usuarios
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE0MzI4LCJleHAiOjE3OTA5MDA3Mjh9.mcK3sAKqWuFG_3afPDwTMLafEtnYde8OPajhkVVhJmY
+### Listar usuários (protegida)
+GET {{baseUrl}}/usuarios
+Authorization: Bearer {{token}}
 
 ### Criar projeto
-POST http://localhost:3001/projetos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM
+POST {{baseUrl}}/projetos
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 { "nome": "Trabalho de API", "descricao": "Projeto da faculdade" }
 
+### Listar projetos
+GET {{baseUrl}}/projetos
+Authorization: Bearer {{token}}
+
+### Buscar projeto 1 (vem com as tarefas dentro)
+GET {{baseUrl}}/projetos/1
+Authorization: Bearer {{token}}
+
 ### Criar tarefa no projeto 1
-POST http://localhost:3001/projetos/1/tarefas
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM
+POST {{baseUrl}}/projetos/1/tarefas
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 { "titulo": "Escrever os testes" }
 
-### Buscar projeto 1 (deve vir com as tarefas dentro)
-GET http://localhost:3001/projetos/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM
-
 ### Listar tarefas do projeto 1
-GET http://localhost:3001/projetos/1/tarefas
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkwODE1NDU2LCJleHAiOjE3OTA5MDE4NTZ9.ARlrh7hdfKcylJIy5M2frQMtVsh5J0LYrGZDUbvukcM
+GET {{baseUrl}}/projetos/1/tarefas
+Authorization: Bearer {{token}}
+
+### Atualizar tarefa 1 do projeto 1
+PUT {{baseUrl}}/projetos/1/tarefas/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "concluida": true }
